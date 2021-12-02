@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
+    'w2e.apps.w2eConfig',
 ]
 
 MIDDLEWARE = [
