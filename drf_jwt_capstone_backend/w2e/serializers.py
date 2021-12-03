@@ -1,8 +1,5 @@
 from rest_framework import serializers
-from .models import RecipesToSave
-from .models import Reviews
-from .models import Reply
-from .models import Rating
+from .models import RecipesToSave, Reviews, Reply, Rating
 
 
 class RecipesToSaveSerializer (serializers.ModelSerializer):
