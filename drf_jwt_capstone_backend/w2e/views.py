@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http.response import Http404
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .serializers import RecipesToSaveSerializer, ReviewsSerializer, ReplySerializer, RatingSerializer
 from .models import RecipesToSave, Reviews, Reply, Rating
@@ -9,7 +11,8 @@ from .models import RecipesToSave, Reviews, Reply, Rating
 # Create your views here.
 
 class RecipesToSaveList(APIView):
-
+    
+    permissions_classes = [IsAuthenticated]
     def get(self, request):
         recipes = RecipesToSave.objects.all()
         serializer = RecipesToSaveSerializer(recipes, many=True)
@@ -24,6 +27,7 @@ class RecipesToSaveList(APIView):
 
 class RecipesToSaveDetail(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return RecipesToSave.objects.get(pk=pk)
@@ -50,6 +54,7 @@ class RecipesToSaveDetail(APIView):
 
 class ReviewsList(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get(self, request):
         reviews = Reply.objects.all()
         serializer = ReviewsSerializer(reviews, many=True)
@@ -64,6 +69,7 @@ class ReviewsList(APIView):
 
 class ReviewsDetail(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Reviews.objects.get(pk=pk)
@@ -90,6 +96,7 @@ class ReviewsDetail(APIView):
 
 class ReplyList(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get(self, request):
         replies = Reply.objects.all()
         serializer = ReplySerializer(replies, many=True)
@@ -104,6 +111,7 @@ class ReplyList(APIView):
 
 class ReplyDetail(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Reply.objects.get(pk=pk)
@@ -130,6 +138,7 @@ class ReplyDetail(APIView):
 
 class RatingList(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get(self, request):
         ratings = Rating.objects.all()
         serializer = RatingSerializer(ratings, many=True)
@@ -144,6 +153,7 @@ class RatingList(APIView):
 
 class RatingDetail(APIView):
 
+    permissions_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Rating.objects.get(pk=pk)
