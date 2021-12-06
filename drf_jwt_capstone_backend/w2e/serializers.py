@@ -5,7 +5,7 @@ from .models import RecipesToSave, Reviews, Reply, Rating
 class RecipesToSaveSerializer (serializers.ModelSerializer):
     class Meta:
         model = RecipesToSave
-        fields = ['user', 'title', 'image', 'image_type']
+        fields = ['user', 'recipe', 'title', 'image', 'image_type']
 
 class ReviewsSerializer(serializers.ModelSerializer):
     class Meta:

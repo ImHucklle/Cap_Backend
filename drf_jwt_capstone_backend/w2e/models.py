@@ -6,6 +6,7 @@ User = get_user_model()
 
 class RecipesToSave(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    recipe = models.IntegerField(default=0, null=False)
     title = models.CharField(max_length=100)
     image = models.CharField(max_length=150)
     image_type= models.CharField(max_length=10)
