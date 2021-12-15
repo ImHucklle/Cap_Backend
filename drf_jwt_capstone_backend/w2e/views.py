@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-from .serializers import RecipesToSaveSerializer, ReviewsSerializer, ReplySerializer, RatingSerializer
-from .models import RecipesToSave, Reviews, Reply, Rating
+from .serializers import RecipesToSaveSerializer, ReviewsSerializer, RatingSerializer
+from .models import RecipesToSave, Reviews, Rating
 
 # Create your views here.
 
@@ -56,7 +56,7 @@ class ReviewsList(APIView):
 
     permissions_classes = [IsAuthenticated]
     def get(self, request):
-        reviews = Reply.objects.all()
+        reviews = Reviews.objects.all()
         serializer = ReviewsSerializer(reviews, many=True)
         return Response(serializer.data)
 
@@ -73,7 +73,7 @@ class ReviewsDetail(APIView):
     def get_object(self, pk):
         try:
             return Reviews.objects.get(pk=pk)
-        except Reply.DoesNotExist:
+        except Reviews.DoesNotExist:
             raise Http404
 
     def get(self, request, pk):

@@ -6,7 +6,7 @@ User = get_user_model()
 
 class RecipesToSave(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    label = models.IntegerField(default=0, null=False)
+    label = models.CharField(max_length=50, default="")
 
 class Reviews(models.Model):
     recipe = models.ForeignKey(RecipesToSave, on_delete=models.CASCADE)
