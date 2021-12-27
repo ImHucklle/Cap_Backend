@@ -9,7 +9,7 @@ class RecipesToSave(models.Model):
     label = models.CharField(max_length=50, default="")
 
 class Reviews(models.Model):
-    recipe = models.ForeignKey(RecipesToSave, on_delete=models.CASCADE)
+    recipe = models.CharField(max_length=50)
     comment_box =models.TextField(max_length=500)
 
 class Rating (models.Model):
